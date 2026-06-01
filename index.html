@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>NFC JO | بطاقات NFC ذكية — أساسي · برو · أعمال | دينار أردني + توصيل</title>
+  <title>NFC JO | بطاقات NFC ذكية — أساسي · برو (الأكثر مبيعاً) · أعمال</title>
   <!-- Google Fonts + Mango-like Arabic Font (Tajawal) -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -250,6 +250,7 @@
       animation: cardReveal 0.6s forwards;
       animation-delay: calc(var(--index, 0) * 0.1s);
       text-align: right;
+      position: relative;
     }
     @keyframes cardReveal {
       to { opacity: 1; transform: translateY(0); }
@@ -259,6 +260,30 @@
       border-color: #e11d48;
       box-shadow: 0 25px 35px -12px rgba(225, 29, 72, 0.4);
     }
+
+    /* Bestseller badge */
+    .bestseller-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #000000;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      letter-spacing: 0;
+    }
+    .bestseller-badge i {
+      font-size: 0.7rem;
+      color: #000;
+    }
+
     .product-img {
       background: linear-gradient(145deg, #1a1a1a, #000000);
       border-radius: 1.5rem;
@@ -296,6 +321,10 @@
       font-weight: 800;
       margin-top: 0.2rem;
       color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
     .product-desc {
       color: #b0b0b0;
@@ -591,6 +620,7 @@
     @media (max-width: 760px) {
       .hero h1 { font-size: 2.2rem; }
       .container { padding: 0 1.2rem; }
+      .bestseller-badge { font-size: 0.65rem; top: 0.7rem; left: 0.7rem; }
     }
   </style>
 </head>
@@ -609,11 +639,11 @@
 
   <div class="hero">
     <h1>انطلق بقوة الـ NFC.<br> <span style="color:#e11d48;">بطاقات NFC Jo</span></h1>
-    <p>أساسي، برو وأعمال — تصميم جريء، أتمتة فورية، ومشاركة سلسة. الدفع بالدينار الأردني.</p>
+    <p>أساسي، برو (الأكثر مبيعاً) وأعمال — تصميم جريء، أتمتة فورية، ومشاركة سلسة. الدفع بالدينار الأردني.</p>
     <button class="btn-glow" id="shopNowBtn">✨ استكشف المجموعة <i class="fas fa-arrow-left"></i></button>
   </div>
 
-  <!-- PRODUCTS SECTION (3 منتجات فقط: Basic, Pro, Business مرتبة حسب السعر) -->
+  <!-- PRODUCTS SECTION (3 منتجات فقط: Basic, Pro (bestseller), Business مرتبة حسب السعر) -->
   <div class="section-title" id="productsTitle">⚡ أحدث إصدارات NFC — الأقل سعراً أولاً (دينار أردني)</div>
   <div class="products-grid" id="productsGrid"></div>
 
@@ -650,15 +680,15 @@
 </div>
 
 <script>
-  // المنتجات الثلاثة فقط: Basic, Pro, Business - الأسعار بالدينار الأردني (JOD)
+  // المنتجات الثلاثة: Basic, Pro (Bestseller), Business - الأسعار بالدينار الأردني
   const products = [
-    { id: 1, name: "Basic أساسي", desc: "  لمسة نهائية لامعة مثالية للاستخدام اليومي بدون اي شعارات", price: 5.00, icon: "fas fa-id-card", category: "Basic", gradient: "linear-gradient(145deg, #1e1e1e, #000000)" },
-    { id: 2, name: "Pro احترافي", desc: "شعار سوشال ميديا ، قراءة فائقة السرعة للمحترفين", price: 7.00, icon: "fas fa-microchip", category: "Pro", gradient: "linear-gradient(145deg, #3a3a4a, #111122)" },
-    { id: 3, name: "Business أعمال", desc: "قابلة للنقش بالليزر، تصميم مخصص، جاهزة لبطاقة العمل الرقمية", price: 16.00, icon: "fas fa-briefcase", category: "Business", gradient: "linear-gradient(145deg, #4a4a5a, #1a1a24)" }
+    { id: 1, name: "Basic أساسي", desc: "لمسة نهائية لامعة مثالية للاستخدام اليومي بدون أي شعارات", price: 5.00, icon: "fas fa-id-card", category: "Basic", gradient: "linear-gradient(145deg, #1e1e1e, #000000)", isBestseller: false },
+    { id: 2, name: "Pro احترافي", desc: "شعار سوشال ميديا، قراءة فائقة السرعة للمحترفين — الأكثر طلباً!", price: 7.00, icon: "fas fa-microchip", category: "Pro", gradient: "linear-gradient(145deg, #3a3a4a, #111122)", isBestseller: true },
+    { id: 3, name: "Business أعمال", desc: "قابلة للنقش بالليزر، تصميم مخصص، جاهزة لبطاقة العمل الرقمية", price: 16.00, icon: "fas fa-briefcase", category: "Business", gradient: "linear-gradient(145deg, #4a4a5a, #1a1a24)", isBestseller: false }
   ];
 
-  const SHIPPING_COST = 3.00;  // 3 دينار أردني رسوم توصيل
-  const BUSINESS_PHONE = "962797284985";  // الرقم 0797284985 بعد تحويله إلى +962797284985
+  const SHIPPING_COST = 3.00;
+  const BUSINESS_PHONE = "962797284985";
 
   let cart = [];
 
@@ -698,8 +728,7 @@
     }, 0);
   }
   function getCartTotal() {
-    let subtotal = getCartSubtotal();
-    return subtotal + SHIPPING_COST;
+    return getCartSubtotal() + SHIPPING_COST;
   }
   function getTotalItemsCount() { return cart.reduce((sum, item) => sum + item.quantity, 0); }
 
@@ -723,7 +752,6 @@
     if(cart.length === 0) { showToast("🛒 سلتك فارغة — أضف بطاقات NFC أولاً!"); return; }
     const text = generateWhatsAppOrderText();
     if(text) {
-      // استخدام الرقم المحدد +962797284985
       const waUrl = `https://wa.me/${BUSINESS_PHONE}?text=${text}`;
       window.open(waUrl, '_blank');
     }
@@ -738,7 +766,15 @@
       const card = document.createElement("div");
       card.className = "product-card";
       card.style.setProperty('--index', idx);
+      
+      // إضافة شارة "الأكثر مبيعاً" إذا كان المنتج Pro
+      let bestsellerHtml = '';
+      if (prod.isBestseller) {
+        bestsellerHtml = `<div class="bestseller-badge"><i class="fas fa-star"></i> الأكثر مبيعاً</div>`;
+      }
+      
       card.innerHTML = `
+        ${bestsellerHtml}
         <div class="product-img" style="background: ${prod.gradient}; color: #e11d48;">
           <i class="${prod.icon}"></i>
           <span>NFC داخلي</span>

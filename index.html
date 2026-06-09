@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>NFC JO | بطاقات NFC </title>
-  <!-- Google Fonts + Mango-like Arabic Font (Tajawal) -->
+  <title>NFC JO | بطاقات NFC JO الذكية </title>
+  <!-- Tajawal Font & Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -13,7 +13,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Tajawal', 'Cairo', 'Mango', sans-serif;
       background: #000000;
@@ -22,8 +21,7 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-
-    /* animated gradient background orb */
+    /* خلفية متحركة */
     body::before {
       content: '';
       position: fixed;
@@ -36,30 +34,16 @@
       z-index: -1;
       animation: slowDrift 30s infinite alternate;
     }
-
     @keyframes slowDrift {
       0% { transform: translate(0%, 0%) rotate(0deg); opacity: 0.4; }
       100% { transform: translate(5%, 3%) rotate(2deg); opacity: 0.8; }
     }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #e11d48; border-radius: 20px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #1a1a1a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #e11d48;
-      border-radius: 20px;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* navbar */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -74,7 +58,6 @@
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .logo {
       font-size: 1.8rem;
       font-weight: 800;
@@ -82,88 +65,57 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: -0.02em;
-      transition: all 0.3s;
     }
-    .logo:hover {
-      transform: scale(1.02);
-      filter: drop-shadow(0 0 8px #e11d48);
-    }
-    .logo span {
-      font-weight: 500;
-      font-size: 1.1rem;
-      background: none;
-      color: #e11d48;
-    }
+    .logo span { font-weight: 500; font-size: 1.1rem; background: none; color: #e11d48; }
     .cart-icon {
       background: #111111;
       padding: 0.7rem 1.2rem;
       border-radius: 3rem;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       display: flex;
       align-items: center;
       gap: 12px;
       border: 1px solid #e11d48;
-      position: relative;
-      overflow: hidden;
+      transition: 0.2s;
     }
-    .cart-icon::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(225,29,72,0.3), transparent);
-      transition: left 0.5s;
-    }
-    .cart-icon:hover::before {
-      left: 100%;
-    }
-    .cart-icon i {
-      font-size: 1.4rem;
-      color: #e11d48;
-      transition: transform 0.2s;
-    }
-    .cart-icon:hover i {
-      transform: scale(1.1);
-    }
+    .cart-icon i { font-size: 1.4rem; color: #e11d48; }
     .cart-count {
       background: #e11d48;
       border-radius: 40px;
       padding: 0.1rem 0.6rem;
-      font-size: 0.85rem;
       font-weight: 700;
       color: white;
     }
 
-    /* hero */
-    .hero {
-      padding: 5rem 0 2rem;
-      text-align: center;
+    /* Hero section مع فيديو */
+    .hero-video {
       position: relative;
-      animation: fadeUp 0.8s ease-out 0.1s both;
+      margin: 2rem 0 1rem;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+      border: 1px solid rgba(225,29,72,0.3);
     }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(to left, #ffffff, #e11d48, #ffffff);
+    .hero-video video {
+      width: 100%;
+      display: block;
+      border-radius: 2rem;
+    }
+    .hero-text {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      background: linear-gradient(to left, #fff, #e11d48, #fff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: textGlow 3s infinite alternate;
     }
-    @keyframes textGlow {
-      0% { text-shadow: 0 0 0px rgba(225,29,72,0); }
-      100% { text-shadow: 0 0 12px rgba(225,29,72,0.5); }
-    }
-    .hero p {
-      font-size: 1.2rem;
+    .hero-text p {
       color: #b0b0b0;
       max-width: 600px;
-      margin: 1.5rem auto;
+      margin: 1rem auto;
     }
     .btn-glow {
       background: linear-gradient(95deg, #e11d48, #ff4d6d);
@@ -173,454 +125,185 @@
       font-weight: 600;
       color: white;
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 8px 20px rgba(225, 29, 72, 0.4);
-      position: relative;
-      overflow: hidden;
+      transition: 0.3s;
       font-family: inherit;
     }
-    .btn-glow::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
-      opacity: 0;
-      transition: opacity 0.4s;
-      transform: rotate(25deg);
-    }
-    .btn-glow:hover::after {
-      opacity: 0.6;
-      animation: shine 0.8s;
-    }
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(25deg); }
-      100% { transform: translateX(100%) rotate(25deg); }
-    }
-    .btn-glow:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 28px rgba(225, 29, 72, 0.7);
-    }
+    .btn-glow:hover { transform: scale(1.03); box-shadow: 0 0 15px #e11d48; }
 
-    /* section title */
+    /* Sections */
     .section-title {
       font-size: 2rem;
       font-weight: 700;
-      margin: 2rem 0 1rem;
-      letter-spacing: -0.02em;
+      margin: 2.5rem 0 1rem;
       border-right: 5px solid #e11d48;
       padding-right: 1rem;
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-      text-align: right;
     }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      right: 0;
-      width: 0%;
-      height: 2px;
-      background: #e11d48;
-      transition: width 0.5s ease;
-    }
-    .section-title.visible::after {
-      width: 80%;
-    }
-
-    /* products grid */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
     .product-card {
       background: #0c0c0c;
-      backdrop-filter: blur(8px);
       border-radius: 2rem;
       padding: 1.3rem;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border: 1px solid #2a2a2a;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: cardReveal 0.6s forwards;
-      animation-delay: calc(var(--index, 0) * 0.1s);
-      text-align: right;
+      transition: 0.3s;
       position: relative;
     }
-    @keyframes cardReveal {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .product-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      border-color: #e11d48;
-      box-shadow: 0 25px 35px -12px rgba(225, 29, 72, 0.4);
-    }
-
-    /* Bestseller badge */
-    .bestseller-badge {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      color: #000000;
-      font-weight: 800;
-      font-size: 0.75rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      z-index: 2;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      letter-spacing: 0;
-    }
-    .bestseller-badge i {
-      font-size: 0.7rem;
-      color: #000;
-    }
-
+    .product-card:hover { transform: translateY(-8px); border-color: #e11d48; }
     .product-img {
-      background: linear-gradient(145deg, #1a1a1a, #000000);
-      border-radius: 1.5rem;
-      height: 170px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      font-size: 3rem;
-      color: #e11d48;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 1.2rem;
       margin-bottom: 1rem;
-      transition: all 0.3s;
-      border: 1px solid #2c2c2c;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-img i {
-      font-size: 3.2rem;
-      filter: drop-shadow(0 0 5px #e11d48);
-      transition: transform 0.3s;
-    }
-    .product-card:hover .product-img i {
-      transform: scale(1.08) rotate(3deg);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 0.5rem;
     }
     .product-img span {
+      background: rgba(0,0,0,0.7);
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
       font-size: 0.7rem;
-      background: #1f1f1f;
-      padding: 0.2rem 0.9rem;
-      border-radius: 50px;
-      color: #cccccc;
     }
-    .product-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-top: 0.2rem;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .product-desc {
-      color: #b0b0b0;
-      font-size: 0.9rem;
-      margin: 0.5rem 0;
-    }
-    .price {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #e11d48;
-      margin: 0.8rem 0;
-    }
+    .product-title { font-size: 1.5rem; font-weight: 800; margin: 0.5rem 0; }
+    .price { font-size: 1.4rem; font-weight: 800; color: #e11d48; margin: 0.5rem 0; }
     .add-to-cart {
-      background: rgba(225, 29, 72, 0.15);
+      background: rgba(225,29,72,0.15);
       border: 1px solid #e11d48;
       width: 100%;
       padding: 0.7rem;
       border-radius: 2rem;
       font-weight: 600;
-      color: white;
       cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: inherit;
-      position: relative;
-      overflow: hidden;
+      transition: 0.2s;
     }
-    .add-to-cart::before {
-      content: '';
+    .add-to-cart:hover { background: #e11d48; }
+    .bestseller-badge {
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.4s;
-    }
-    .add-to-cart:hover::before {
-      left: 100%;
-    }
-    .add-to-cart:hover {
-      background: #e11d48;
-      box-shadow: 0 0 12px #e11d48;
-      transform: scale(0.98);
+      top: 1rem;
+      left: 1rem;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: black;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+      display: flex;
+      gap: 0.3rem;
+      z-index: 2;
     }
 
-    /* benefits section */
-    .usp-section {
-      padding: 2rem 0 4rem;
-      border-top: 1px solid #2a2a2a;
-      margin-top: 1rem;
+    /* How it works */
+    .steps-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
     }
+    .step-card {
+      background: #0a0a0a;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      width: 220px;
+      border: 1px solid #2a2a2a;
+      transition: 0.2s;
+    }
+    .step-card i { font-size: 2.5rem; color: #e11d48; margin-bottom: 1rem; }
+    .step-card h3 { margin-bottom: 0.5rem; }
+
+    /* Use cases */
+    .usecases-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .usecase-item {
+      background: #111;
+      padding: 1.2rem;
+      border-radius: 1.5rem;
+      width: 200px;
+      text-align: center;
+      border: 1px solid #2a2a2a;
+    }
+    .usecase-item i { font-size: 2rem; color: #e11d48; margin-bottom: 0.5rem; }
+
+    /* Social proof */
+    .social-proof {
+      background: linear-gradient(145deg, #0e0e0e, #000);
+      border-radius: 2rem;
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+      border: 1px solid #e11d48;
+    }
+    .social-proof h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .social-proof p { font-size: 1.2rem; color: #e11d48; font-weight: bold; }
+
+    /* USP cards (مشكلة/حل) */
     .usp-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 2rem;
-      margin-top: 2rem;
+      margin: 2rem 0;
     }
     .usp-card {
       background: #0a0a0a;
-      backdrop-filter: blur(4px);
-      border-radius: 2rem;
-      padding: 1.8rem;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      width: 240px;
       text-align: center;
-      width: 220px;
-      border-bottom: 2px solid #e11d48;
-      transition: all 0.3s ease;
       border: 1px solid #2a2a2a;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
     }
-    .usp-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .usp-card:hover {
-      transform: translateY(-8px);
-      border-color: #e11d48;
-      box-shadow: 0 10px 25px -8px rgba(225,29,72,0.3);
-    }
-    .usp-card i {
-      font-size: 2.5rem;
-      color: #e11d48;
-      margin-bottom: 1rem;
-      transition: transform 0.2s;
-    }
-    .usp-card:hover i {
-      transform: scale(1.2);
-      color: #ff4d6d;
-    }
-    .usp-card h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-    .usp-card p {
-      color: #9ca3af;
-      font-size: 0.85rem;
-    }
+    .usp-card i { font-size: 2rem; color: #e11d48; margin-bottom: 0.8rem; }
+    .usp-card h4 { margin-bottom: 0.5rem; }
+    .usp-card p { color: #bbb; font-size: 0.9rem; }
 
-    /* cart drawer */
+    /* Cart drawer */
     .cart-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 1000;
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.2s;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(6px);
+      z-index: 1000; visibility: hidden; opacity: 0; transition: 0.2s;
     }
-    .cart-overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
+    .cart-overlay.active { visibility: visible; opacity: 1; }
     .cart-drawer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      max-width: 450px;
-      height: 100%;
-      background: #0a0a0a;
-      box-shadow: 5px 0 30px rgba(0, 0, 0, 0.8);
-      z-index: 1001;
-      transform: translateX(-100%);
-      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-      display: flex;
-      flex-direction: column;
+      position: fixed; top: 0; left: 0; width: 100%; max-width: 450px; height: 100%;
+      background: #0a0a0a; z-index: 1001; transform: translateX(-100%);
+      transition: transform 0.3s; display: flex; flex-direction: column;
       border-right: 1px solid #e11d48;
     }
-    .cart-overlay.active .cart-drawer {
-      transform: translateX(0);
-    }
-    .cart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem;
-      border-bottom: 1px solid #2a2a2a;
-    }
-    .cart-header h2 {
-      font-size: 1.6rem;
-      color: white;
-    }
-    .close-cart {
-      background: none;
-      border: none;
-      color: #e11d48;
-      font-size: 1.7rem;
-      cursor: pointer;
-    }
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #111111;
-      margin-bottom: 1rem;
-      padding: 0.8rem;
-      border-radius: 1.2rem;
-      border: 1px solid #2c2c2c;
-      animation: fadeSlideIn 0.2s ease;
-    }
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    .cart-item-info h4 {
-      font-size: 1rem;
-      color: white;
-    }
-    .cart-item-info p {
-      font-size: 0.8rem;
-      color: #e11d48;
-    }
-    .cart-item-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .cart-item-actions button {
-      background: #1f1f1f;
-      border: none;
-      color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 40px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .cart-item-actions button:hover {
-      background: #e11d48;
-    }
-    .cart-item-actions span {
-      width: 24px;
-      text-align: center;
-      color: white;
-    }
-    .remove-item {
-      color: #e11d48;
-      background: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    .cart-total-row {
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid #2a2a2a;
-      font-size: 1rem;
-      color: #ddd;
-    }
-    .cart-total-row.final {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #e11d48;
-      border-top: 2px solid #e11d48;
-      margin-top: 0.5rem;
-      padding-top: 1rem;
-    }
+    .cart-overlay.active .cart-drawer { transform: translateX(0); }
+    .cart-header { display: flex; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid #2a2a2a; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem; }
+    .cart-item { display: flex; justify-content: space-between; background: #111; margin-bottom: 1rem; padding: 0.8rem; border-radius: 1rem; }
+    .cart-total-row { padding: 0.8rem 1.5rem; display: flex; justify-content: space-between; border-top: 1px solid #2a2a2a; }
+    .cart-total-row.final { font-weight: 800; color: #e11d48; border-top: 2px solid #e11d48; }
     .checkout-btn {
       background: linear-gradient(95deg, #25D366, #128C7E);
-      margin: 1rem 1.5rem 1.8rem;
-      padding: 0.9rem;
-      border: none;
-      border-radius: 3rem;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: 0.3s;
-      font-family: inherit;
-    }
-    .checkout-btn:hover {
-      transform: scale(1.02);
-      filter: brightness(1.05);
-    }
-    .empty-cart-msg {
-      text-align: center;
-      padding: 2rem;
-      color: #9ca3af;
+      margin: 1rem 1.5rem; padding: 0.9rem; border-radius: 3rem;
+      font-weight: bold; color: white; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; gap: 8px;
     }
     .toast-notify {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1a1a1a;
-      backdrop-filter: blur(12px);
-      border: 1px solid #e11d48;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 60px;
-      font-weight: 500;
-      z-index: 2000;
-      transition: 0.2s;
-      opacity: 0;
-      pointer-events: none;
-      font-family: inherit;
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #1a1a1a; border: 1px solid #e11d48; color: white;
+      padding: 12px 24px; border-radius: 60px; z-index: 2000; opacity: 0;
+      transition: 0.2s; pointer-events: none;
     }
-    .toast-notify.show {
-      opacity: 1;
-      bottom: 40px;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid #232323;
-      color: #6b7280;
-      margin-top: 2rem;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .toast-notify.show { opacity: 1; bottom: 40px; }
+    footer { text-align: center; padding: 2rem; border-top: 1px solid #232323; margin-top: 2rem; color: #6b7280; }
     @media (max-width: 760px) {
-      .hero h1 { font-size: 2.2rem; }
-      .container { padding: 0 1.2rem; }
-      .bestseller-badge { font-size: 0.65rem; top: 0.7rem; left: 0.7rem; }
+      .hero-text h1 { font-size: 2rem; }
+      .container { padding: 0 1rem; }
     }
   </style>
 </head>
@@ -630,41 +313,73 @@
 
 <div class="container">
   <div class="navbar">
-    <div class="logo">NFC JO <span>| أحمر · أسود · أبيض</span></div>
+    <div class="logo">NFC JO <span>| المس وشارك</span></div>
     <div class="cart-icon" id="cartIconBtn">
       <i class="fas fa-shopping-cart"></i>
       <span class="cart-count" id="cartCountBadge">0</span>
     </div>
   </div>
 
-  <div class="hero">
-    <h1>انطلق بقوة الـ NFC.<br> <span style="color:#e11d48;">بطاقات NFC JO الذكية</span></h1>
-    <p>أساسي، برو (الأكثر مبيعاً) وأعمال — تصميم جريء، أتمتة فورية، ومشاركة سلسة</p>
-    <button class="btn-glow" id="shopNowBtn">✨ استكشف المجموعة <i class="fas fa-arrow-left"></i></button>
+  <!-- فيديو تمهيدي قصير -->
+  <div class="hero-video">
+    <video autoplay muted loop playsinline poster="https://placehold.co/1280x720/111/fff?text=NFC+JO">
+      <source src="https://cdn.pixabay.com/video/2023/07/19/171527-845858215_large.mp4" type="video/mp4">
+      <source src="https://cdn.pixabay.com/video/2022/03/21/112243-693743888_large.mp4" type="video/mp4">
+      متصفحك لا يدعم الفيديو.
+    </video>
   </div>
 
-  <!-- PRODUCTS SECTION (3 منتجات فقط: Basic, Pro (bestseller), Business مرتبة حسب السعر) -->
-  <div class="section-title" id="productsTitle">⚡ أحدث إصدارات بطاقاتنا الذكية </div>
+  <div class="hero-text">
+    <h1>لمسة واحدة تنقلك الى عالمك الرقمي</h1>
+    <p>بطاقات NFC JO الذكية - شارك حساباتك، ملفاتك، وبطاقتك المهنية بلمسة خفيفة على الهاتف.</p>
+    <button class="btn-glow" id="shopNowBtn">✨ اطلب بطاقتك الآن <i class="fas fa-arrow-left"></i></button>
+  </div>
+
+  <!-- ========== 1. مثالية لـ (تم تبديل مكانها إلى الأعلى) ========== -->
+  <div class="section-title">🎯 مثالية لـ:</div>
+  <div class="usecases-grid">
+    <div class="usecase-item"><i class="fas fa-graduation-cap"></i><h4>طالب جامعة</h4><p>مشاركة السيرة الذاتية، المحفظة، الروابط الدراسية</p></div>
+    <div class="usecase-item"><i class="fas fa-chart-line"></i><h4>صاحب مشروع</h4><p>عرض أعمالك، ملفك التجاري، تواصل سريع مع العملاء</p></div>
+    <div class="usecase-item"><i class="fas fa-video"></i><h4>صانع محتوى</h4><p>مشاركة قنوات السوشيال ميديا بضغطة واحدة</p></div>
+    <div class="usecase-item"><i class="fas fa-bullhorn"></i><h4>موظف مبيعات</h4><p>بطاقة أعمال رقمية، عرض المنتجات، كتالوج سريع</p></div>
+  </div>
+
+  <!-- ========== 2. لماذا يحتاجها الجميع؟ ========== -->
+  <div class="section-title">💡 لماذا يحتاجها الجميع؟</div>
+  <div class="usp-grid">
+    <div class="usp-card"><i class="fas fa-exchange-alt"></i><h4>تعبت من كتابة حساباتك كل مرة؟</h4><p>لمسة واحدة وكل شيء يظهر على هاتف العميل.</p></div>
+    <div class="usp-card"><i class="fas fa-globe"></i><h4>تعمل على أغلب أجهزة Android و iPhone</h4><p>لا تحتاج تطبيقات إضافية، فقط قرّب البطاقة.</p></div>
+    <div class="usp-card"><i class="fas fa-sync-alt"></i><h4>عدّل الرابط وقت ما تريد</h4><p>تغيرت حساباتك؟ إعادة برمجة فورية عبر هاتفك.</p></div>
+    <div class="usp-card"><i class="fas fa-shield-alt"></i><h4>بياناتك آمنة ومشفرة</h4><p>رقاقة أصلية NXP، لا تخاف من الاختراق.</p></div>
+  </div>
+
+  <!-- ========== 3. الثقة تنتشر (إثبات اجتماعي) ========== -->
+  <div class="social-proof">
+    <h3>عملؤنا</h3>
+    <p>✅ تم بيع أكثر من 35 بطاقة داخل الجامعات الأردنية</p>
+    <p>⭐ عملاء سعداء: "غيرت طريقة تعارفي بالعملاء" - مهند، طالب جامعي</p>
+    <p>🚀 انضم إلى أكثر من 100 مستخدم في الأردن</p>
+  </div>
+
+  <!-- ========== 4. المنتجات (اختر بطاقتك المناسبة) ========== -->
+  <div class="section-title" id="productsTitle">⚡ اختر بطاقتك المناسبة</div>
   <div class="products-grid" id="productsGrid"></div>
 
-  <!-- BENEFITS SECTION -->
-  <div class="usp-section" id="uspSection">
-    <div class="section-title" style="border-right-color: #e11d48;">🔥 لماذا NFC Jo؟</div>
-    <div class="usp-grid" id="uspGrid">
-      <div class="usp-card"><i class="fas fa-bolt"></i><h4>اتصال فوري</h4><p>بدون تأخير، شغّل واعمل</p></div>
-      <div class="usp-card"><i class="fas fa-layer-group"></i><h4>قابل لإعادة البرمجة</h4><p>غيّر البيانات لانهائياً</p></div>
-      <div class="usp-card"><i class="fas fa-shield-alt"></i><h4>تشفير آمن</h4><p>رقاقات NXP بمعايير بنكية</p></div>
-      <div class="usp-card"><i class="fas fa-palette"></i><h4>تصاميم مخصصة</h4><p>علامتك التجارية بأسلوبك</p></div>
-      <div class="usp-card"><i class="fas fa-globe"></i><h4>يعمل في كل مكان</h4><p>iOS/Android/Web3 جاهز</p></div>
-    </div>
+  <!-- ========== 5. كيف تعمل؟ (تم تبديل مكانها إلى الأسفل) ========== -->
+  <div class="section-title">📲 كيف تعمل؟</div>
+  <div class="steps-grid">
+    <div class="step-card"><i class="fas fa-shopping-cart"></i><h3>١. اطلب البطاقة</h3><p>اختر النوع المناسب لك (Basic, Pro, Business)</p></div>
+    <div class="step-card"><i class="fas fa-code-branch"></i><h3>٢. نبرمجها حسب طلبك</h3><p>نضع الروابط أو معلومات التواصل التي تريدها</p></div>
+    <div class="step-card"><i class="fas fa-mobile-alt"></i><h3>٣. المس وشارك</h3><p>اقترب من أي هاتف NFC وشارك معلوماتك فوراً</p></div>
   </div>
+
 </div>
 
 <footer>
-  <p>© 2025 NFC Jo — حلول NFC ذكية. | الطلب عبر واتساب · شحن عالمي ·</p>
+  <p>© 2025 NFC Jo — بطاقات ذكية للجيل الجديد | الطلب عبر واتساب · شحن لجميع المحافظات</p>
 </footer>
 
-<!-- cart drawer -->
+<!-- Cart drawer -->
 <div class="cart-overlay" id="cartOverlay">
   <div class="cart-drawer">
     <div class="cart-header">
@@ -672,7 +387,7 @@
       <button class="close-cart" id="closeCartBtn">&times;</button>
     </div>
     <div class="cart-items" id="cartItemsContainer">
-      <div class="empty-cart-msg">🛒 سلتك فارغة. أضف بعض البطاقات السحرية!</div>
+      <div class="empty-cart-msg" style="text-align:center; padding:2rem;">🛒 سلتك فارغة</div>
     </div>
     <div id="cartTotalsContainer"></div>
     <button class="checkout-btn" id="checkoutBtn"><i class="fab fa-whatsapp"></i> إتمام الطلب عبر واتساب</button>
@@ -680,21 +395,20 @@
 </div>
 
 <script>
-  // المنتجات الثلاثة: Basic, Pro (Bestseller), Business - الأسعار بالدينار الأردني
+  // المنتجات مع صور تجسيدية
   const products = [
-    { id: 1, name: "Basic أساسي", desc: "لمسة نهائية لامعة مثالية للاستخدام اليومي بدون أي شعارات", price: 5.00, icon: "fas fa-id-card", category: "Basic", gradient: "linear-gradient(145deg, #1e1e1e, #000000)", isBestseller: false },
-    { id: 2, name: "Pro احترافي", desc: "شعار سوشال ميديا، قراءة فائقة السرعة للمحترفين — الأكثر طلباً!", price: 7.00, icon: "fas fa-microchip", category: "Pro", gradient: "linear-gradient(145deg, #3a3a4a, #111122)", isBestseller: true },
-    { id: 3, name: "Business أعمال", desc: "قابلة للنقش بالليزر، تصميم مخصص، جاهزة لبطاقة العمل الرقمية", price: 16.00, icon: "fas fa-briefcase", category: "Business", gradient: "linear-gradient(145deg, #4a4a5a, #1a1a24)", isBestseller: false }
+    { id: 1, name: "Basic أساسي", desc: "بطاقة لامعة بدون شعارات — مثالية للاستخدام اليومي والحفظ السريع للروابط", price: 5.00, icon: "fas fa-id-card", category: "Basic", gradient: "linear-gradient(145deg, #1e1e1e, #000000)", isBestseller: false, image: "https://placehold.co/600x400/1a1a1a/fff?text=NFC+Basic" },
+    { id: 2, name: "Pro احترافي", desc: "شعار سوشال ميديا مدمج، قراءة فائقة السرعة — الأكثر مبيعاً!", price: 7.00, icon: "fas fa-microchip", category: "Pro", gradient: "linear-gradient(145deg, #3a3a4a, #111122)", isBestseller: true, image: "https://placehold.co/600x400/3a2a2a/fff?text=Pro+NFC" },
+    { id: 3, name: "Business أعمال", desc: "نقش بالليزر، تصميم أنيق، جاهزة لبطاقة العمل الرقمية والملفات التعريفية", price: 16.00, icon: "fas fa-briefcase", category: "Business", gradient: "linear-gradient(145deg, #4a4a5a, #1a1a24)", isBestseller: false, image: "https://placehold.co/600x400/4a3a3a/fff?text=Business+Card" }
   ];
 
   const SHIPPING_COST = 3.00;
   const BUSINESS_PHONE = "962797284985";
-
   let cart = [];
 
   function loadCartFromStorage() {
     const stored = localStorage.getItem("nfcjo_cart");
-    if (stored) { try { cart = JSON.parse(stored); } catch(e) { cart = []; } }
+    if (stored) try { cart = JSON.parse(stored); } catch(e) { cart = []; }
     else cart = [];
   }
   function saveCartToStorage() { localStorage.setItem("nfcjo_cart", JSON.stringify(cart)); }
@@ -707,14 +421,11 @@
     updateCartUI();
     const prod = products.find(p => p.id === productId);
     showToast(`🔥 ${prod?.name} أضيفت إلى السلة!`);
-    const cartIcon = document.querySelector('.cart-icon i');
-    if(cartIcon) cartIcon.style.transform = 'scale(1.2)';
-    setTimeout(() => { if(cartIcon) cartIcon.style.transform = ''; }, 200);
   }
   function updateCartItemQuantity(id, newQty) {
-    if(newQty <= 0) { removeCartItem(id); return; }
+    if (newQty <= 0) { removeCartItem(id); return; }
     const idx = findCartItemIndex(id);
-    if(idx !== -1) { cart[idx].quantity = newQty; saveCartToStorage(); updateCartUI(); }
+    if (idx !== -1) { cart[idx].quantity = newQty; saveCartToStorage(); updateCartUI(); }
   }
   function removeCartItem(id) {
     cart = cart.filter(item => item.id !== id);
@@ -727,17 +438,15 @@
       return sum + (prod ? prod.price * item.quantity : 0);
     }, 0);
   }
-  function getCartTotal() {
-    return getCartSubtotal() + SHIPPING_COST;
-  }
+  function getCartTotal() { return getCartSubtotal() + SHIPPING_COST; }
   function getTotalItemsCount() { return cart.reduce((sum, item) => sum + item.quantity, 0); }
 
   function generateWhatsAppOrderText() {
-    if(cart.length === 0) return null;
+    if (cart.length === 0) return null;
     let lines = ["🛍️ *طلب NFC Jo* 🛍️", ""];
-    for(let item of cart) {
+    for (let item of cart) {
       const prod = products.find(p => p.id === item.id);
-      if(prod) lines.push(`• ${prod.name} (${prod.category}) x${item.quantity} = ${(prod.price * item.quantity).toFixed(2)} د.أ`);
+      if (prod) lines.push(`• ${prod.name} x${item.quantity} = ${(prod.price * item.quantity).toFixed(2)} د.أ`);
     }
     let subtotal = getCartSubtotal();
     lines.push("", `💰 المجموع الفرعي: ${subtotal.toFixed(2)} د.أ`);
@@ -749,39 +458,29 @@
   }
 
   function whatsappCheckout() {
-    if(cart.length === 0) { showToast("🛒 سلتك فارغة — أضف بطاقات NFC أولاً!"); return; }
+    if (cart.length === 0) { showToast("🛒 سلتك فارغة — أضف بطاقات أولاً!"); return; }
     const text = generateWhatsAppOrderText();
-    if(text) {
-      const waUrl = `https://wa.me/${BUSINESS_PHONE}?text=${text}`;
-      window.open(waUrl, '_blank');
-    }
-    showToast("📱 جارٍ التحويل إلى واتساب الخاص بالمتجر — أرسل طلبك");
+    if (text) window.open(`https://wa.me/${BUSINESS_PHONE}?text=${text}`, '_blank');
+    showToast("📱 جارٍ التحويل إلى واتساب");
   }
 
   function renderProducts() {
     const grid = document.getElementById("productsGrid");
-    if(!grid) return;
+    if (!grid) return;
     grid.innerHTML = "";
     products.forEach((prod, idx) => {
       const card = document.createElement("div");
       card.className = "product-card";
       card.style.setProperty('--index', idx);
-      
-      // إضافة شارة "الأكثر مبيعاً" إذا كان المنتج Pro
-      let bestsellerHtml = '';
-      if (prod.isBestseller) {
-        bestsellerHtml = `<div class="bestseller-badge"><i class="fas fa-star"></i> الأكثر مبيعاً</div>`;
-      }
-      
+      let bestsellerHtml = prod.isBestseller ? `<div class="bestseller-badge"><i class="fas fa-star"></i> الأكثر مبيعاً</div>` : '';
       card.innerHTML = `
         ${bestsellerHtml}
-        <div class="product-img" style="background: ${prod.gradient}; color: #e11d48;">
-          <i class="${prod.icon}"></i>
+        <div class="product-img" style="background-image: url('${prod.image}'); background-size: cover; background-position: center;">
           <span>NFC داخلي</span>
         </div>
-        <div class="category-badge" style="border-color:#e11d48;color:#e11d48; display:inline-block; margin-bottom:0.5rem;">${prod.category}</div>
+        <div class="category-badge" style="display:inline-block; background:#1f1f1f; padding:0.2rem 0.7rem; border-radius:30px; font-size:0.7rem;">${prod.category}</div>
         <div class="product-title">${prod.name}</div>
-        <div class="product-desc">${prod.desc}</div>
+        <div class="product-desc" style="color:#b0b0b0; margin:0.3rem 0;">${prod.desc}</div>
         <div class="price">${prod.price.toFixed(2)} د.أ</div>
         <button class="add-to-cart" data-id="${prod.id}"><i class="fas fa-plus-circle"></i> أضف إلى السلة</button>
       `;
@@ -798,54 +497,37 @@
   function renderCartDrawer() {
     const container = document.getElementById("cartItemsContainer");
     const totalsContainer = document.getElementById("cartTotalsContainer");
-    if(!container) return;
-    
-    if(cart.length === 0) {
-      container.innerHTML = `<div class="empty-cart-msg"><i class="fas fa-shopping-bag"></i> لا توجد عناصر.<br>اختر بطاقتك!</div>`;
-      if(totalsContainer) totalsContainer.innerHTML = "";
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = `<div style="text-align:center; padding:2rem;"><i class="fas fa-shopping-bag"></i> لا توجد عناصر.<br>اختر بطاقتك!</div>`;
+      if (totalsContainer) totalsContainer.innerHTML = "";
       return;
     }
-    
     let html = "";
-    for(let item of cart) {
+    for (let item of cart) {
       const prod = products.find(p => p.id === item.id);
-      if(!prod) continue;
+      if (!prod) continue;
       html += `
-        <div class="cart-item" data-id="${prod.id}">
-          <div class="cart-item-info">
-            <h4>${prod.name} <span style="font-size:0.7rem;background:#2c2c38;padding:2px 6px;border-radius:20px;color:#e11d48;">${prod.category}</span></h4>
-            <p>${prod.price.toFixed(2)} د.أ للقطعة</p>
-          </div>
-          <div class="cart-item-actions">
+        <div class="cart-item">
+          <div><h4>${prod.name}</h4><small>${prod.price.toFixed(2)} د.أ للقطعة</small></div>
+          <div style="display:flex; gap:10px; align-items:center;">
             <button class="cart-qty-minus" data-id="${prod.id}">-</button>
             <span>${item.quantity}</span>
             <button class="cart-qty-plus" data-id="${prod.id}">+</button>
-            <button class="remove-item" data-id="${prod.id}"><i class="fas fa-trash-alt"></i></button>
+            <button class="remove-item" data-id="${prod.id}" style="background:none; color:#e11d48;"><i class="fas fa-trash"></i></button>
           </div>
         </div>
       `;
     }
     container.innerHTML = html;
-    
     const subtotal = getCartSubtotal();
     const total = getCartTotal();
     const totalsHtml = `
-      <div class="cart-total-row">
-        <span>المجموع الفرعي:</span>
-        <span>${subtotal.toFixed(2)} د.أ</span>
-      </div>
-      <div class="cart-total-row">
-        <span>رسوم التوصيل:</span>
-        <span>${SHIPPING_COST.toFixed(2)} د.أ</span>
-      </div>
-      <div class="cart-total-row final">
-        <span>الإجمالي النهائي:</span>
-        <span>${total.toFixed(2)} د.أ</span>
-      </div>
+      <div class="cart-total-row"><span>المجموع الفرعي:</span><span>${subtotal.toFixed(2)} د.أ</span></div>
+      <div class="cart-total-row"><span>رسوم التوصيل:</span><span>${SHIPPING_COST.toFixed(2)} د.أ</span></div>
+      <div class="cart-total-row final"><span>الإجمالي النهائي:</span><span>${total.toFixed(2)} د.أ</span></div>
     `;
-    if(totalsContainer) totalsContainer.innerHTML = totalsHtml;
-    
-    // attach events
+    if (totalsContainer) totalsContainer.innerHTML = totalsHtml;
     document.querySelectorAll('.cart-qty-minus').forEach(btn => {
       btn.addEventListener('click', () => updateCartItemQuantity(parseInt(btn.dataset.id), cart.find(i => i.id === parseInt(btn.dataset.id))?.quantity - 1));
     });
@@ -859,55 +541,37 @@
 
   function updateCartBadge() {
     const badge = document.getElementById("cartCountBadge");
-    if(badge) badge.innerText = getTotalItemsCount();
+    if (badge) badge.innerText = getTotalItemsCount();
   }
-  function updateCartUI() {
-    renderCartDrawer();
-    updateCartBadge();
-  }
+  function updateCartUI() { renderCartDrawer(); updateCartBadge(); }
 
   let toastTimeout;
   function showToast(msg) {
     const toast = document.getElementById("toastMsg");
-    if(!toast) return;
+    if (!toast) return;
     toast.innerText = msg;
     toast.classList.add("show");
     clearTimeout(toastTimeout);
     toastTimeout = setTimeout(() => toast.classList.remove("show"), 2200);
   }
 
-  // cart drawer controls
   const overlay = document.getElementById("cartOverlay");
   const openCartBtn = document.getElementById("cartIconBtn");
   const closeCartBtn = document.getElementById("closeCartBtn");
-  function openCartDrawer() { if(overlay) overlay.classList.add("active"); }
-  function closeCartDrawer() { if(overlay) overlay.classList.remove("active"); }
-  if(openCartBtn) openCartBtn.addEventListener("click", openCartDrawer);
-  if(closeCartBtn) closeCartBtn.addEventListener("click", closeCartDrawer);
-  if(overlay) overlay.addEventListener("click", (e) => { if(e.target === overlay) closeCartDrawer(); });
+  function openCartDrawer() { if (overlay) overlay.classList.add("active"); }
+  function closeCartDrawer() { if (overlay) overlay.classList.remove("active"); }
+  if (openCartBtn) openCartBtn.addEventListener("click", openCartDrawer);
+  if (closeCartBtn) closeCartBtn.addEventListener("click", closeCartDrawer);
+  if (overlay) overlay.addEventListener("click", (e) => { if (e.target === overlay) closeCartDrawer(); });
 
   const checkoutBtn = document.getElementById("checkoutBtn");
-  if(checkoutBtn) checkoutBtn.addEventListener("click", whatsappCheckout);
+  if (checkoutBtn) checkoutBtn.addEventListener("click", whatsappCheckout);
   const shopBtn = document.getElementById("shopNowBtn");
-  if(shopBtn) shopBtn.addEventListener("click", () => document.querySelector(".products-grid")?.scrollIntoView({ behavior: "smooth", block: "start" }));
-
-  // scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        if(entry.target.classList.contains('usp-card')) entry.target.style.animation = 'fadeSlideIn 0.4s forwards';
-        if(entry.target.classList.contains('section-title')) entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.usp-card, .section-title').forEach(el => observer.observe(el));
-  setTimeout(() => document.getElementById('productsTitle')?.classList.add('visible'), 200);
+  if (shopBtn) shopBtn.addEventListener("click", () => document.querySelector(".products-grid")?.scrollIntoView({ behavior: "smooth", block: "start" }));
 
   loadCartFromStorage();
   renderProducts();
   updateCartUI();
-  document.querySelectorAll('.usp-card').forEach(card => observer.observe(card));
 </script>
 </body>
 </html>
